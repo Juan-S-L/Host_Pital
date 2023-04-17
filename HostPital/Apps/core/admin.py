@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Apps.core.models import User, DoctorEsp
+from Apps.core.models import User
 # Register your models here.
 
 @admin.register(User)
@@ -8,8 +8,3 @@ class User(admin.ModelAdmin):
     list_filter = ('tipo','is_active',)
     search_fields = ('id','tipo','first_name','last_name','cc')
     
-@admin.register(DoctorEsp)
-class DocEsp(admin.ModelAdmin):
-    list_display = ('id','doctor','espcialidad')
-    list_filter = ('espcialidad',)
-    search_fields = ('id', 'espcialidad')
