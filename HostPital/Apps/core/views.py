@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 
 from .forms import RegistroUsuario
 
 from django.contrib.auth.forms import AuthenticationForm
-from Apps.core.models import User
 from django.contrib.auth import login, logout, authenticate
+
+from Apps.core.models import User
+from Apps.medios_internos.models import Cita
 
 from django.db import IntegrityError
 
@@ -73,3 +76,23 @@ def inicioSesion(request):
         else:
             login(request, user)
             return redirect('inicio')
+
+def cita(request):
+    
+    if request.user.tipo == 'doctor':   
+        citas = Cita.objects.filter(user_doctor=request.user)
+    else:
+        citas = Cita.objects.filter(user_cliente=request.user)
+    citas_dict = []
+    for cita in citas:
+        cita_dict = {
+            'title': f'{cita.doctor} - {cita.cliente}',
+            'start': cita.fechaHora_I.isoformat(),
+            'end': cita.fechaHora_F.isoformat(),
+            'id': cita.id,  # aquí debes especificar un valor para el parámetro 'id'
+        }
+        citas_dict.append(cita_dict)
+
+    return render(request, 'citas.html',{
+        'citas': citas_dict,
+    })
