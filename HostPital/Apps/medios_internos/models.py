@@ -38,10 +38,11 @@ class DoctorEsp(models.Model):
         verbose_name = 'Dr. con especialidad'
         verbose_name_plural = 'Dr. con especialidades'
 
-class cita(models.Model):
+class Cita(models.Model):
     user_doctor = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Doctor',limit_choices_to={'tipo':'doctor'}, related_name='citas_doctor')
     user_cliente = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name='Cliente',limit_choices_to={'tipo':'cliente'}, related_name='citas_cliente')
-    fechaHora = models.DateTimeField(null=True)
+    fechaHora_I = models.DateTimeField(null=True, verbose_name='Fecha y hora de inicio')
+    fechaHora_F = models.DateTimeField(null=True, verbose_name='Fecha y hora de cierre')
     
     @property
     def cliente(self):
