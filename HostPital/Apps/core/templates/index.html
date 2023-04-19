@@ -15,5 +15,31 @@
         </ul>
     </nav>
     <h1>Bienvenido usuario</h1>
+
+    <p>Bienvenido {{user.first_name}} {{user.last_name}}</p>
+
+    <ul>
+        <li>
+            <a href="{% url 'cita' %}">Citas</a>
+        </li>
+        {% if user.tipo == 'cliente' %}
+        <li>
+            <a href="">Pedir consultas</a>
+        </li>
+        <li>
+            <a href="">Historial clinico</a>
+        </li>
+        {% elif user.tipo == 'doctor' %}
+        <li>
+            <a href="">Pacientes a tratar</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="">Historial clinico</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- <p>Prueba</p>
+    <p>El usuario {{user.username}} es tipo {{user.tipo}}</p> -->
 </body>
 </html>
