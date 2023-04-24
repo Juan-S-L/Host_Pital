@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/',views.inicioSesion, name='login'),
     
     path('inicio/citas/',views.cita, name='cita'),
+    path('inicio/solicitarCita/',views.solicitarCita, name='solicitarCita'),
 ]

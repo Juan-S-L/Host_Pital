@@ -1,0 +1,6 @@
+<h1>Solicitar cita para {{user.first_name}}</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Enviar</button>
+</form>

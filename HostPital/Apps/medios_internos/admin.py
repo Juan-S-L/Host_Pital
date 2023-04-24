@@ -11,3 +11,4 @@ class DocEsp(admin.ModelAdmin):
 @admin.register(Cita)
 class cita_(admin.ModelAdmin):
     list_display = ('id','doctor','cliente','fechaHora_I','fechaHora_F')
+    readonly_fields = ('fechaHora_F',)

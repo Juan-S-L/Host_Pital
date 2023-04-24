@@ -2,12 +2,16 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 from .forms import RegistroUsuario
+from Apps.medios_internos.forms import CitaForm
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 
 from Apps.core.models import User
 from Apps.medios_internos.models import Cita
+
+from datetime import datetime, timedelta
 
 from django.db import IntegrityError
 
@@ -26,8 +30,11 @@ def registro(request):
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
+                nombre = request.POST['first_name']
+                apellido = request.POST['last_name']
+                username = nombre.split(' ')[1].lower() + '.' + apellido.split(' ')[0].lower()
                 user = User.objects.create_user(
-                    username=request.POST['username'],
+                    username=username,
                     first_name=request.POST['first_name'],
                     last_name=request.POST['last_name'],
                     cc=request.POST['cc'],
@@ -77,6 +84,7 @@ def inicioSesion(request):
             login(request, user)
             return redirect('inicio')
 
+
 def cita(request):
     
     if request.user.tipo == 'doctor':   
@@ -96,3 +104,21 @@ def cita(request):
     return render(request, 'citas.html',{
         'citas': citas_dict,
     })
+
+
+def solicitarCita(request):
+    if request.method == 'GET':
+        return render(request, 'solicitarCita.html',{
+            'form': CitaForm
+        })
+    else:
+        form = CitaForm(request.POST)
+        if form.is_valid():
+            hora = form.cleaned_data['hora']
+            doctor = form.cleaned_data['user_doctor']
+            fechaHora_I = datetime.now() + timedelta(days=3, hours=hora.hour, minutes=hora.minute)
+            fechaHora_F = fechaHora_I + timedelta(minutes=20)
+            cita = Cita(user_doctor=doctor, user_cliente=request.user, fechaHora_I=fechaHora_I, fechaHora_F=fechaHora_F)
+            cita.save()
+            # messages.success(request, 'La cita a sido creada exitosamente')
+            return redirect('inicio')

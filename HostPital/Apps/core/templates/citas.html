@@ -9,11 +9,12 @@
 <h1>Citas de {{user.first_name}}</h1>
 <p>Tus citas {{user.email}}</p>
 <p></p>
-<div id="calendar" class="container"></div>
+<div id="calendar" class="card" style="padding: 50px;"></div>
 {% endblock text %}
 
 {% block files_js %}
 <script src="{% static 'fullcalendar/lib/main.js' %}"></script>
+<script src="{% static 'fullcalendar/lib/locales-all.js' %}"></script>
 <script>
     document.addEventListener('DOMContentLoaded',function(){
             var calendarUI = document.getElementById('calendar');
@@ -21,6 +22,7 @@
                 events: {{ citas|safe }}
             });
             calendar.render();
+            calendar.setOption('locale','es')
         });
 </script>
 {% endblock files_js %}

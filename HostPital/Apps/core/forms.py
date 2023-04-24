@@ -11,13 +11,12 @@ class RegistroUsuario(UserCreationForm, forms.ModelForm):
     password1 = forms.CharField(label='Contraseña',widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirma contraseña',widget=forms.PasswordInput)
     
-    
-    class Meta:
-        model = User
-        fields = ['username','first_name','last_name','cc','email','telefono','fechaNacimiento','password1','password2']
-        help_text = {k:"" for k in fields}
-        
     def __init__(self, *args, **kwargs):
         super(RegistroUsuario, self).__init__(*args, **kwargs)
         self.fields['tipo'].widget = forms.HiddenInput()
         self.fields['tipo'].initial = 'cliente'
+    
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','cc','email','telefono','fechaNacimiento','password1','password2']
+        help_text = {k:"" for k in fields}

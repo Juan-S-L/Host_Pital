@@ -1,5 +1,6 @@
 from django.db import models
 from Apps.core.models import User
+from datetime import timedelta
 # Create your models here.
 
 class DoctorEsp(models.Model):
@@ -44,6 +45,16 @@ class Cita(models.Model):
     fechaHora_I = models.DateTimeField(null=True, verbose_name='Fecha y hora de inicio')
     fechaHora_F = models.DateTimeField(null=True, verbose_name='Fecha y hora de cierre')
     
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.fechaHora_F = self.fechaHora_I + timedelta(minutes=20)
+        else:
+            citaAnte = Cita.objects.get(id=self.id)
+            if citaAnte.fechaHora_I !=  self.fechaHora_I:
+                self.fechaHora_F = self.fechaHora_I + timedelta(minutes=20)
+                
+        super().save(*args, **kwargs)
+    
     @property
     def cliente(self):
         return f'{self.user_cliente.first_name} {self.user_cliente.last_name}'
@@ -51,3 +62,13 @@ class Cita(models.Model):
     @property
     def doctor(self):
         return f'{self.user_doctor.first_name} {self.user_doctor.last_name}'
+
+# class InfoCliente(models.Moldel):
+#     tipoSexo = (
+#         ('M','Masculino'),
+#         ('F','Femenino'),
+#         ('O','Otro'),
+#     )
+#     user_cliente = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Cliente', limit_choices_to={'tipo':'cliente'}, related_name='info_cliente')
+#     sexo = models.CharField(max_length=68, choices=tipoSexo, verbose_name='Sexo',null=True, blank=True)
+    
