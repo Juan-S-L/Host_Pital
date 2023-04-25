@@ -1,4 +1,4 @@
-### Host_Pital
+# Host_Pital
 ***
 # **🗃️Tabla de contenido**.
 [Introduccion.](#Introduccion)
@@ -64,7 +64,7 @@ HostPital is an online system designed to provide fast, organized medical assist
 . . .
 
 ***
-### **📄Planteamiento del problema.** 
+# **📄Planteamiento del problema.** 
 ***
 ## 🖋️Descripcion de Problema.
 En la actualidad, el sistema de salud enfrenta varios problemas que limitan su capacidad para brindar atención médica de calidad. Uno de los principales problemas es la falta de organización en los servicios médicos, lo que se traduce en largas esperas para los pacientes, dificultades para programar citas y falta de acceso a información importante del historial médico. Esto no solo tiene un impacto negativo en la experiencia de los pacientes, sino que también puede afectar la eficacia y eficiencia de los profesionales de la salud, lo que puede repercutir en la calidad de atención que reciben los pacientes.
@@ -73,7 +73,7 @@ Además, los hospitales y clínicas a menudo operan con sistemas obsoletos, lo q
 
 En este contexto, HostPital busca abordar estos problemas mediante la creación de un sistema en línea que permita a los pacientes y profesionales de la salud acceder a servicios médicos de calidad de manera rápida, organizada y eficiente. HostPital ofrece a los pacientes la capacidad de buscar y encontrar el cuidado médico adecuado, programar citas en línea y gestionar su historial médico de manera segura. Además, HostPital también ayuda a los profesionales de la salud a acceder a información crítica de los pacientes, administrar mejor sus horarios y optimizar la atención médica que brindan.
 ***
-### **📄Objetivos.** 
+# **📄Objetivos.** 
 ***
 ## **🏷️Objetivo General**.
 Mejorar la accesibilidad y calidad de los servicios médicos a través de una plataforma en línea, que permita a los pacientes encontrar y programar citas con profesionales de la salud de manera eficiente, así como gestionar su historial médico de manera segura, y a su vez, ayudar a los profesionales de la salud a administrar mejor su tiempo y atender a sus pacientes de manera más efectiva
@@ -115,12 +115,12 @@ Para abordar este problema, se propone la implementación de un sistema en líne
 . . .
 
 ***
-###  **👨‍💻Metodologia de investigacion.**
+#  **👨‍💻Metodologia de investigacion.**
 ***
 . . .
 
 ***
-### **📲Requerimientos**
+# **📲Requerimientos**
 ***
 ## **Requerimientos funcionales.**
 ✅ Creación y registro de nuevos usuarios: El sistema debe permitir la creación y registro de nuevos usuarios. El proceso de registro debe incluir la captura de información personal del usuario, como nombre, apellido, fecha de nacimiento, dirección, teléfono y correo electrónico
@@ -136,6 +136,6 @@ Para abordar este problema, se propone la implementación de un sistema en líne
 ✅ Manejo de niveles de acceso: El sistema debe permitir la asignación de diferentes niveles de acceso a los usuarios. Esto permitirá a los usuarios autorizados acceder solo a la información y funcionalidades relevantes para su trabajo.
 
 ***
-### **📋Conclusiones.**
+# **📋Conclusiones.**
 ***
 . . .
