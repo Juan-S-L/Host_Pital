@@ -63,12 +63,13 @@ class Cita(models.Model):
     def doctor(self):
         return f'{self.user_doctor.first_name} {self.user_doctor.last_name}'
 
-# class InfoCliente(models.Moldel):
-#     tipoSexo = (
-#         ('M','Masculino'),
-#         ('F','Femenino'),
-#         ('O','Otro'),
-#     )
-#     user_cliente = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Cliente', limit_choices_to={'tipo':'cliente'}, related_name='info_cliente')
-#     sexo = models.CharField(max_length=68, choices=tipoSexo, verbose_name='Sexo',null=True, blank=True)
-    
+class InfoCliente(models.Model):
+    tipoSexo = (
+        ('M','Masculino'),
+        ('F','Femenino'),
+        ('O','Otro'),
+    )
+    user_cliente = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Cliente', limit_choices_to={'tipo':'cliente'}, related_name='info_cliente')
+    sexo = models.CharField(max_length=68, choices=tipoSexo, verbose_name='Sexo',null=True, blank=True)
+    direccionResidencia = models.CharField(max_length=100, null=True, blank=True, verbose_name='Direccion de residencia')
+    nacionalidad = models.CharField(max_length=60, null=True, blank=True, verbose_name='Nacionalidad' )
