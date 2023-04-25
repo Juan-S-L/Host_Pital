@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block titulo %}
+Perfil
+{% endblock %}
+{% block text %}
+<h3>Usuario {{user}}</h3>
+<p style="padding: 5px;">Nombre completo: {{user.first_name}} {{user.last_name}}</p>
+<p style="padding: 5px;">Cedula: {{user.cc}}</p>
+<p style="padding: 5px;">Telefono: {{user.telefono}}</p>
+<p style="padding: 5px;">Fecha de nacimiento: {{user.fechaNacimiento}}</p>
+
+<hr>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="appointment-btn scrollto">enviar informacion</button>
+</form>
+
+{% endblock text %}
