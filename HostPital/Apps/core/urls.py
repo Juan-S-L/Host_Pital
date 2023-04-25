@@ -6,8 +6,11 @@ urlpatterns = [
     path('registro/',views.registro, name='registro'),
     path('inicio/',views.index, name='inicio'),
     path('logout/',views.cerrarSesion, name='logout'),
+    path('inicio/perfil/',views.perfil, name='perfil'),
     path('login/',views.inicioSesion, name='login'),
     
     path('inicio/citas/',views.cita, name='cita'),
     path('inicio/solicitarCita/',views.solicitarCita, name='solicitarCita'),
+    
+    
 ]
