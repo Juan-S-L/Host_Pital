@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 from .forms import RegistroUsuario
-from Apps.medios_internos.forms import CitaForm
+from Apps.medios_internos.forms import CitaForm, InfoCliente
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -14,8 +14,6 @@ from Apps.medios_internos.models import Cita
 from datetime import datetime, timedelta
 
 from django.db import IntegrityError
-
-# Create your views here.
 
 
 def home(request):
@@ -122,3 +120,9 @@ def solicitarCita(request):
             cita.save()
             # messages.success(request, 'La cita a sido creada exitosamente')
             return redirect('inicio')
+
+
+def perfil(request):
+    return render(request, 'perfil.html',{
+        'form': InfoCliente
+    })
