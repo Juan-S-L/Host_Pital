@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'HostPital.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'Hostpital.db',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'host_pital',
+        'USER': 'juan',
+        'PASSWORD': '.16794300.@',
+        'HOST': 'localhost',
+        'PORT': 3306
     }
 }
 
