@@ -8,7 +8,7 @@
 [Abstrac.](#Abstrac)
 
 1. [Planteamiento del problema.](#planteamiento-del-problema)
-  
+
  1.1. [Descripcion del problema.](#%EF%B8%8Fdescripcion-de-problema)
     
  1.2. [Objetivos.](#Objetivos)
@@ -123,16 +123,23 @@ Para abordar este problema, se propone la implementación de un sistema en líne
 # **📲Requerimientos**
 ***
 ## **Requerimientos funcionales.**
-✅ Creación y registro de nuevos usuarios: El sistema debe permitir la creación y registro de nuevos usuarios. El proceso de registro debe incluir la captura de información personal del usuario, como nombre, apellido, fecha de nacimiento, dirección, teléfono y correo electrónico
+✅ Creación y registro de nuevos usuarios: El sistema debe permitir la creación y registro de nuevos usuarios. El proceso de registro debe incluir la captura de información personal del usuario, como nombre, apellido, fecha de nacimiento, dirección, teléfono y correo electrónico.
+
 ✅ Actualización de datos del usuario: El sistema debe permitir la actualización de los datos personales de un usuario registrado. Los usuarios deben tener la capacidad de actualizar su información personal en cualquier momento.
+
 ✅ Búsqueda del historial clínico de los pacientes: El sistema debe permitir la búsqueda y recuperación del historial clínico de los pacientes. Los usuarios autorizados deben poder buscar y ver la información médica de un paciente en particular.
+
 ✅ Eliminación de datos del usuario: El sistema debe permitir la eliminación de la información personal de un usuario registrado. La eliminación debe ser irreversible y debe requerir una confirmación para evitar la eliminación accidental.
 
 ## **Requerimientos no funcionales.**
 ✅ Compatibilidad con navegadores: El sistema debe ser compatible con todos los navegadores web comunes, como Google Chrome, Mozilla Firefox, Safari e Internet Explorer.
+
 ✅ Encriptación de información de usuarios: El sistema debe utilizar métodos de encriptación de datos para proteger la información personal de los usuarios.
+
 ✅ Manejo de seguridad: El sistema debe tener medidas de seguridad efectivas para proteger contra posibles ataques externos y garantizar la privacidad y la confidencialidad de la información del paciente.
+
 ✅ Escalabilidad en el desarrollo: El sistema debe ser escalable para permitir una fácil adición de nuevas características y funcionalidades a medida que las necesidades del usuario evolucionan.
+
 ✅ Manejo de niveles de acceso: El sistema debe permitir la asignación de diferentes niveles de acceso a los usuarios. Esto permitirá a los usuarios autorizados acceder solo a la información y funcionalidades relevantes para su trabajo.
 
 ***
