@@ -150,7 +150,7 @@ Para abordar este problema, se propone la implementación de un sistema en líne
 # **Modelado**
 ***
 ## Diagrama de clases
-
+![Imagen diagrama de clases UML](##)
 ***
 # **📋Conclusiones.**
 ***
