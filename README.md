@@ -41,7 +41,11 @@
 
 6. [Requerimientos.](#re)
 
-7. [Modelado.]
+7. [Modelado.](#mo)
+
+ 7.1. [Diagrama de clases](#di)
+ 
+ 7.2. [Entidad realcion de Bases de Datos](#de)
 
 8. [Bibliografias.](#Bibliografias)
 
@@ -141,6 +145,11 @@ Para abordar este problema, se propone la implementación de un sistema en líne
 ✅ Escalabilidad en el desarrollo: El sistema debe ser escalable para permitir una fácil adición de nuevas características y funcionalidades a medida que las necesidades del usuario evolucionan.
 
 ✅ Manejo de niveles de acceso: El sistema debe permitir la asignación de diferentes niveles de acceso a los usuarios. Esto permitirá a los usuarios autorizados acceder solo a la información y funcionalidades relevantes para su trabajo.
+
+***
+# **Modelado**
+***
+## Diagrama de clases
 
 ***
 # **📋Conclusiones.**
