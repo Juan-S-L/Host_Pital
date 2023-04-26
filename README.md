@@ -150,7 +150,7 @@ Para abordar este problema, se propone la implementación de un sistema en líne
 # **Modelado**
 ***
 ## **Diagrama de clases.**
-![Imagen diagrama de clases UML](https://github.com/Juan-S-L/Host_Pital/tree/main/HostPital/Apps/core/static/assets/img/git-readme/DiagramaClases_HostPital.png)
+![Imagen diagrama de clases UML](https://raw.githubusercontent.com/Juan-S-L/Host_Pital/master/assets/img/git-readme/DiagramaClases_HostPital.png)
 
 ## **Entidad realcion.**
 ![Imagen entidad realcion](https://github.com/Juan-S-L/Host_Pital/tree/main/HostPital/Apps/core/static/assets/img/git-readme/Modelado%20HostPital.png)
