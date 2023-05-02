@@ -1,5 +1,6 @@
 from django.db import models
 from Apps.core.models import User
+from django.utils import timezone
 from datetime import timedelta
 # Create your models here.
 
@@ -62,14 +63,22 @@ class Cita(models.Model):
     @property
     def doctor(self):
         return f'{self.user_doctor.first_name} {self.user_doctor.last_name}'
-
-class InfoCliente(models.Model):
-    tipoSexo = (
-        ('M','Masculino'),
-        ('F','Femenino'),
-        ('O','Otro'),
-    )
-    user_cliente = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Cliente', limit_choices_to={'tipo':'cliente'}, related_name='info_cliente')
-    sexo = models.CharField(max_length=68, choices=tipoSexo, verbose_name='Sexo',null=True, blank=True)
-    direccionResidencia = models.CharField(max_length=100, null=True, blank=True, verbose_name='Direccion de residencia')
-    nacionalidad = models.CharField(max_length=60, null=True, blank=True, verbose_name='Nacionalidad' )
+    
+class HistorialCliente(models.Model):
+    user_clinte = models.ForeignKey(User,null=True,on_delete=models.CASCADE,verbose_name='Cliente',limit_choices_to={'tipo':'cliente'}, related_name='historial_cliente')
+    user_doctor = models.ForeignKey(User,on_delete=models.CASCADE,verbose_name='Doctor',limit_choices_to={'tipo':'doctor'}, related_name='historial_doctor')
+    fecha_creacion = models.DateTimeField(default=timezone.now)
+    fecha_actualizacion = models.DateTimeField(auto_now=True,verbose_name='Actualización')
+    
+    enfermedades_previas = models.TextField(blank=True, null=True,verbose_name='Enfermedades')
+    medicamentos = models.TextField(blank=True, null=True,verbose_name='Medicamentos')
+    alergias = models.TextField(blank=True, null=True,verbose_name='Alergias')
+    examenes_realizados = models.TextField(blank=True, null=True,verbose_name='Examenes realizados')
+    
+    @property
+    def cliente(self):
+        return f'{self.user_clinte.first_name} {self.user_clinte.last_name}' if self.user_clinte else ''
+    
+    @property
+    def doctor(self):
+        return f'{self.user_doctor.first_name} {self.user_doctor.last_name}'
