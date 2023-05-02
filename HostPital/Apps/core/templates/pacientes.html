@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Lista de pacientes
+{% endblock %}
+
+{% block text %}
+{% for paciente in pacientes %}
+<form method="POST" >
+    {% csrf_token %}
+    <input type="hidden" name="paciente_id" value="{{ paciente.id }}">
+    <button type="submit" style="border: none; background: none; padding: 0;">
+        <div style="border: 1px solid black; padding: 10px; margin: 10px; display: inline-block; border-radius: 5px;">
+            <h3>{{ paciente.first_name }} {{ paciente.last_name }}</h3>
+            <p>{{ paciente.fechaNacimiento }}</p>
+            <p>Género: {{ paciente.get_sexo_display }}</p>
+        </div>
+    </button>
+</form>
+{% endfor %}
+{% endblock %}

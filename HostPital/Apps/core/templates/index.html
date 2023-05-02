@@ -30,15 +30,15 @@
             <a href="{% url 'solicitarCita' %}">Pedir consultas</a>
         </li>
         <li>
-            <a href="">Historial clinico</a>
+            <a href="{% url 'historialClinico_cliente' %}">Historial clinico</a>
         </li>
         {% elif user.tipo == 'doctor' %}
         <li>
-            <a href="">Pacientes a tratar</a>
+            <a href="{% url 'pacientes' %}">Pacientes a tratar</a>
         </li>
         {% else %}
         <li>
-            <a href="">Historial clinico</a>
+            <a href="#">Historial clinico</a>
         </li>
         {% endif %}
     </ul>
