@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.urls import reverse
 
 from .forms import RegistroUsuario
-from Apps.medios_internos.forms import CitaForm, InfoCliente
+from Apps.medios_internos.forms import CitaForm, HistorialForm
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
 from Apps.core.models import User
-from Apps.medios_internos.models import Cita
+from Apps.medios_internos.models import Cita, HistorialCliente
 
 from datetime import datetime, timedelta
 
@@ -40,7 +41,9 @@ def registro(request):
                     telefono=request.POST['telefono'],
                     fechaNacimiento=request.POST['fechaNacimiento'],
                     password=request.POST['password1'],
-                    tipo=request.POST['tipo']
+                    tipo=request.POST['tipo'],
+                    sexo=request.POST['sexo'],
+                    direccionResidencia=request.POST['direccionResidencia'],
                 )
                 user.save()
                 login(request, user)
@@ -123,6 +126,52 @@ def solicitarCita(request):
 
 
 def perfil(request):
-    return render(request, 'perfil.html',{
-        'form': InfoCliente
+    return render(request, 'perfil.html')
+
+
+def pacientes(request):
+    doctor = request.user
+    citas = Cita.objects.filter(user_doctor=doctor)
+    
+    paciente = set()
+    for cita in citas:
+        paciente.add(cita.user_cliente)
+    
+    if request.method == 'POST':
+        idPaciente = request.POST.get('paciente_id')
+        # print(idPaciente)
+        url = reverse('historialClinico', args=[idPaciente])
+        return redirect(url)
+    
+    return render(request, 'pacientes.html',{
+        'pacientes':paciente,
+    })
+
+
+def historialClinico(request,id):
+    cliente = User.objects.get(id=id)
+    try:
+        historial = HistorialCliente.objects.get(user_clinte=cliente)
+    except HistorialCliente.DoesNotExist:
+        historial = HistorialCliente(user_clinte=cliente,user_doctor=request.user)
+        historial.save()
+        
+    if request.method == 'POST':
+        form = HistorialForm(request.POST, instance=historial)
+        if form.is_valid():
+            form.save()
+            return redirect('inicio')
+    else:
+        form = HistorialForm(instance=historial)
+    
+    return render(request, 'historialclinico.html',{
+        'form':form,
+        'cliente':cliente,
+    })
+    
+
+def historialClinico_Cliente(request):
+    historial = HistorialCliente.objects.get(user_clinte=request.user)
+    return render(request, 'historialClinico_Cliente.html',{
+        'historial':historial
     })
