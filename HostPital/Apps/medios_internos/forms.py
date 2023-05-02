@@ -1,5 +1,5 @@
 from django import forms
-from .models import Cita, InfoCliente
+from .models import Cita, HistorialCliente
 from Apps.core.models import User
 
 class CitaForm(forms.ModelForm):
@@ -9,11 +9,13 @@ class CitaForm(forms.ModelForm):
         model = Cita
         fields = ['user_doctor','hora',]
         
-class InfoCliente(forms.ModelForm):
-    sexo = forms.ChoiceField(label='Genero', choices=InfoCliente.tipoSexo, initial='M')
-    direccionResidencia = forms.CharField(label='Direccion de residencia', max_length=80)
-    nacionalidad = forms.CharField(label='Nacionalidad', max_length=80)
-    
+class HistorialForm(forms.ModelForm):
     class Meta:
-        model = InfoCliente
-        fields = ['sexo','direccionResidencia','nacionalidad']
+        model = HistorialCliente
+        fields = ('enfermedades_previas', 'medicamentos', 'alergias', 'examenes_realizados')
+        widgets = {
+            'enfermedades_previas': forms.Textarea(attrs={'rows': 3}),
+            'medicamentos': forms.Textarea(attrs={'rows': 3}),
+            'alergias': forms.Textarea(attrs={'rows': 3}),
+            'examenes_realizados': forms.Textarea(attrs={'rows': 3}),
+        }
